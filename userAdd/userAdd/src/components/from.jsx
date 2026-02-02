@@ -1,9 +1,30 @@
 import React, { useState } from "react";
 
-function Form({ name, img, position }) {
+function Form() {
+  const [name, setname] = useState("");
+  const [img, setimg] = useState("");
+  const [position, setposition] = useState("");
+  const [alluser, setAlluser] = useState([]);
+
+  function formHandler(e) {
+    e.preventDefault();
+    // const oldUser = [...alluser];
+    // oldUser.push({ name, img, position });
+    setAlluser([...alluser, { name, img, position }]);
+
+    setname("");
+    setimg("");
+    setposition("");
+  }
+
   return (
     <>
-      <div className="h-40 w-auto bg-gray-800 px-5 py-5 flex justify-center align-center gap-2 flex-wrap">
+      <form
+        onSubmit={(e) => {
+          formHandler(e);
+        }}
+        className="h-40 w-auto bg-gray-800 px-5 py-5 flex justify-center align-center gap-5 flex-wrap"
+      >
         <input
           className="bg-white rounded-2xl px-4 py-2 h-10"
           type="text"
@@ -34,7 +55,8 @@ function Form({ name, img, position }) {
         <button className="bg-yellow-700 px-4 py-2 h-10 rounded-lg active:scale-95">
           Submit
         </button>
-      </div>
+      </form>
+      
     </>
   );
 }
