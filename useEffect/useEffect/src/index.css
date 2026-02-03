@@ -1,0 +1,9 @@
+* {
+  background: black;
+  color: aliceblue;
+}
+button {
+  background-color: crimson;
+  height: 40px;
+  width: 90px;
+}
